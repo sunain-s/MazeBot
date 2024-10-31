@@ -1,3 +1,6 @@
+#ifndef ROBOT_H
+#define ROBOT_H
+
 typedef enum dir{
     EAST,
     SOUTH,
@@ -16,18 +19,20 @@ Robot * create_robot(int, int, int, int);
 
 void draw_robot(Robot *, int);
 
-void forward();
+void forward(Robot *);
 
-void left();
+void left(Robot *);
 
-void right();
+void right(Robot *);
 
 bool at_marker();
 
-bool can_move_forward();
+bool can_move_forward(Robot *, int *, int);
 
 void pick_up_marker();
 
 void drop_marker();
 
 int get_marker_count();
+
+#endif
