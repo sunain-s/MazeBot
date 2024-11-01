@@ -42,8 +42,11 @@ void right(Robot *r) {
     r->direction = (r->direction + 1) % 4;
 }
 
-bool at_marker() {
-
+bool at_marker(Robot *r, int *map, int cols) {
+    if (*((map + r->y * cols) + r->x) == 4) {
+        return true;
+    }
+    return false;
 }
 
 bool can_move_forward(Robot *r, int *map, int cols) {
@@ -70,14 +73,17 @@ bool can_move_forward(Robot *r, int *map, int cols) {
     return false;
 }
 
-void pick_up_marker() {
-
+void pick_up_marker(Robot *r, int *map, int cols) {
+    if (at_marker(r, map, cols)) {
+        r->markers += 1;
+        *((map + r->y * cols) + r->x) = 2;
+    }
 }
 
 void drop_marker() {
 
 }
 
-int get_marker_count() {
-
+int get_marker_count(Robot *r) {
+    return r->markers;
 }

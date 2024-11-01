@@ -71,7 +71,7 @@ void draw_map(int *map, int cols, int rows, int length) {
     for (int i = 0; i < rows; i++) {    
         for (int j = 0; j < cols; j++) {
             if (*((map + i * cols) + j) != 0) {
-                if (*((map + i * cols) + j) == -1) {
+                if (*((map + i * cols) + j) == -2) {
                     setRGBColour(23, 199, 4);
                     fillRect(length * j, length * i, length, length);
                 }

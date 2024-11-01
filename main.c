@@ -43,13 +43,12 @@ int main() {
     draw_map(map, cols, rows, cell_length);
 
     foreground();
-    
-
     while (true) {
         clear();
         draw_markers(map, cols, rows, cell_length);
+        pick_up_marker(robot, map, cols);
         draw_robot(robot, cell_length);
-        move_robot(robot, map, cols);
+        move_robot(robot, map, cols); 
         sleep(1000);
     }
     
