@@ -22,19 +22,22 @@
 
 int main() {
     srand((unsigned) time(NULL));
-    int SCREEN_W = 200; //+ 100 * (rand() % 18);
-    int SCREEN_H = 200; //+ 100 * (rand() % 8);
-    // printf("w: %d, h: %d\n", SCREEN_W, SCREEN_H);
-    setWindowSize(SCREEN_W, SCREEN_H);
     int cell_length = 20;
-    int cols = num_cells(SCREEN_W, cell_length);
-    int rows = num_cells(SCREEN_H, cell_length);
+    int cols = 10 + rand() % 85;
+    int rows = 10 + rand() % 35;
+    if (cols % 2 == 0) cols--;
+    if (rows % 2 == 0) rows--;
+    int SCREEN_W = screen_dimension(cols, cell_length);
+    int SCREEN_H = screen_dimension(rows, cell_length);
+    setWindowSize(SCREEN_W, SCREEN_H);
+    // printf("w: %d, h: %d\n", SCREEN_W, SCREEN_H);
     // printf("rows: %d, cols: %d\n", rows, cols);
     int *map = malloc(rows * cols * sizeof(int));
 
     background();
     create_map(map, cols, rows);
-    add_obstacles(map, cols, rows, (int)((rows - 4) * (cols - 4) * 0.4));
+    sidewinder_maze(map, cols, rows);
+    // add_obstacles(map, cols, rows, (int)((rows - 4) * (cols - 4) * 0.4));
 
     Point *home = set_home(map, cols, rows);
     Dir direction;
@@ -53,7 +56,7 @@ int main() {
     }
     
     free(robot);
-    free(map);
+    free(map); // need to delete row by row - this isnt complete
     free(home);
     return 0;
 }

@@ -35,4 +35,6 @@ void drop_marker();
 
 int get_marker_count();
 
+bool is_at_home(Robot *, int *, int);
+
 #endif

@@ -43,7 +43,7 @@ void right(Robot *r) {
 }
 
 bool at_marker(Robot *r, int *map, int cols) {
-    if (*((map + r->y * cols) + r->x) == 4) {
+    if (*((map + r->y * cols) + r->x) == 6) {
         return true;
     }
     return false;
@@ -80,10 +80,20 @@ void pick_up_marker(Robot *r, int *map, int cols) {
     }
 }
 
-void drop_marker() {
-
+void drop_marker(Robot *r, int *map, int cols) {
+    if (r->markers > 0) {
+        r->markers -= 1;
+        *((map + r->y * cols) + r->x) = 6;
+    }
 }
 
 int get_marker_count(Robot *r) {
     return r->markers;
+}
+
+bool is_at_home(Robot *r, int *map, int cols) {
+    if (*((map + r->y * cols) + r->x) == 4) {
+        return true;
+    }
+    return false;
 }

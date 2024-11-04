@@ -8,13 +8,15 @@ typedef struct coord {
     int y;
 } Point;
 
-int num_cells(int, int);
+int screen_dimension(int, int);
 
 Point * set_home(int *, int, int);
 
+// void add_obstacles(int *, int, int, int);
+
 void create_map(int *, int, int);
 
-void add_obstacles(int *, int, int, int);
+void sidewinder_maze(int *, int, int);
 
 void draw_map(int *, int, int, int);
 
