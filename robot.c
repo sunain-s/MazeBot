@@ -2,15 +2,17 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include "graphics.h"
 #include "robot.h"
 
-Robot* create_robot(int x, int y, int direction, int markers) {
+Robot* create_robot(int x, int y, int direction, int markers, int *robot_memory) {
     Robot *r = malloc(sizeof(Robot));
     r->x = x;
     r->y = y;
     r->direction = direction;
     r->markers = markers;
+    r->memory = robot_memory;
     return r;
 }
 
@@ -96,4 +98,12 @@ bool is_at_home(Robot *r, int *map, int cols) {
         return true;
     }
     return false;
+}
+
+void setup_memory(int *memory, int cols, int rows) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            *((memory) + (i * cols) + j) = 0;
+        }
+    }
 }

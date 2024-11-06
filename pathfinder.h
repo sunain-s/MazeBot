@@ -5,4 +5,6 @@
 
 void move_robot(Robot *, int *, int);
 
+// void depth_first_search(Robot *, int *, int, int);
+
 #endif

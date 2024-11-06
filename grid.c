@@ -101,7 +101,7 @@ void draw_map(int *map, int cols, int rows, int length) {
                     setRGBColour(255, 69, 8);
                     fillRect(length * j, length * i, length, length);
                 }
-                else if ( *((map + i * cols) + j) == 2) { // grid cell
+                else if (*((map + i * cols) + j) == 2 || *((map + i * cols) + j) ==  6) { // grid cell
                     setRGBColour(0, 0, 0);
                     drawRect(length * j, length * i, length, length);  
                 }
