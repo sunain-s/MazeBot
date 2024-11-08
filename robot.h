@@ -16,7 +16,7 @@ typedef struct Robot {
     int *memory;
 } Robot;
 
-Robot * create_robot(int, int, int, int, int *);
+Robot * create_robot(int, int, int, int);
 
 void draw_robot(Robot *, int);
 
@@ -38,6 +38,6 @@ int get_marker_count();
 
 bool is_at_home(Robot *, int *, int);
 
-void setup_memory(int *, int, int);
+void move_robot(Robot *, int *, int);
 
 #endif

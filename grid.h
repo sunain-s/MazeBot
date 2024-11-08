@@ -8,9 +8,9 @@ typedef struct coord {
     int y;
 } Point;
 
-int screen_dimension(int, int);
+int set_screen_dimension(int, int);
 
-Point * set_home(int *, int *, int, int);
+Point * set_home(int *, int, int);
 
 void create_map(int *, int, int);
 

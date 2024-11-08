@@ -9,11 +9,11 @@
 //-----------------------------------------------------------------------------------------------
 // Background
 
-int screen_dimension(int cell_num, int cell_length) {
+int set_screen_dimension(int cell_num, int cell_length) {
     return cell_num * cell_length;
 }
 
-Point* set_home(int *map, int *memory, int cols, int rows) {
+Point* set_home(int *map, int cols, int rows) {
     Point *p = malloc(sizeof(Point));
     int i = 0;
     while (i < 1) {
@@ -21,7 +21,6 @@ Point* set_home(int *map, int *memory, int cols, int rows) {
         int r = rand() % (rows - 2) + 2;
         if (*((map + r * cols) + c) == 2) {
             *((map + r * cols) + c) = 4;
-            *((memory + r * cols) + c) = 2;
             p->x = c;
             p->y = r;
             i++;
@@ -50,6 +49,7 @@ void create_map(int *map, int cols, int rows) {
 }
 
 void sidewinder_maze(int *map, int cols, int rows) {
+    // sidewinder maze generation algorithm, carves a route up or right randomly 
     for (int i = 2; i < rows - 1; i += 2) {
         int begin = 1;
 
@@ -67,7 +67,7 @@ void sidewinder_maze(int *map, int cols, int rows) {
                 } while (up % 2 == 1);
                 *((map + (i - 1) * cols) + up) = 2;
 
-                begin = j + 2;
+            begin = j + 2;
             }
         }
     }
