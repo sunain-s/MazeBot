@@ -66,8 +66,7 @@ void sidewinder_maze(int *map, int cols, int rows) {
                     up = rand() % (j - begin + 1) + begin;
                 } while (up % 2 == 1);
                 *((map + (i - 1) * cols) + up) = 2;
-
-            begin = j + 2;
+                begin = j + 2;
             }
         }
     }

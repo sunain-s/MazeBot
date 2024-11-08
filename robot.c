@@ -87,7 +87,7 @@ bool can_move_forward(Robot *r, int *map, int cols) {
 }
 
 void move_robot(Robot *r, int *map, int cols) {
-    // right-forward-left-turnaround movement priority
+    // EAST-NORTH-WEST-SOUTH movement priority
     right(r);
     if (can_move_forward(r, map, cols)) {
         forward(r);
