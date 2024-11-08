@@ -10,9 +10,7 @@ typedef struct coord {
 
 int screen_dimension(int, int);
 
-Point * set_home(int *, int, int);
-
-// void add_obstacles(int *, int, int, int);
+Point * set_home(int *, int *, int, int);
 
 void create_map(int *, int, int);
 
@@ -24,6 +22,6 @@ void add_markers(int *, int, int, int);
 
 void draw_markers(int *, int, int, int);
 
-// bool check_coord(int *, int, int, int, int);
+void display_marker_count(int, int, int);
 
 #endif 

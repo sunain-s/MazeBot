@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "graphics.h"
+#include "grid.h"
 #include "robot.h"
 
 Robot* create_robot(int x, int y, int direction, int markers, int *robot_memory) {
@@ -18,7 +19,19 @@ Robot* create_robot(int x, int y, int direction, int markers, int *robot_memory)
 
 void draw_robot(Robot *r, int length) {
     setRGBColour(0, 0, 255);
-    fillArc(r->x * length, r->y * length, length, length, 0, 360);
+    // fillArc(r->x * length, r->y * length, length, length, 0, 360);
+    if (r->direction == EAST) {
+        fillPolygon(3, (int[]){r->x * length + length / 10, r->x * length + length / 10, r->x * length + length}, (int[]){r->y * length + length / 10, r->y * length + 9 * length / 10, r->y * length + length / 2});
+    }
+    else if (r->direction == SOUTH) {
+        fillPolygon(3, (int[]){r->x * length + length / 2, r->x * length + length / 10, r->x * length + 9 * length / 10}, (int[]){r->y * length + length, r->y * length + length / 10, r->y * length + length / 10});
+    }
+    else if (r->direction == WEST) {
+        fillPolygon(3, (int[]){r->x * length, r->x * length + 9 * length / 10, r->x * length + 9 * length / 10}, (int[]){r->y * length + length / 2, r->y * length + length / 10, r->y * length + 9 * length / 10});
+    }
+    else if (r->direction == NORTH) {
+        fillPolygon(3, (int[]){r->x * length + length / 2, r->x * length + length / 10, r->x * length + 9 * length / 10}, (int[]){r->y * length, r->y * length + 9 * length / 10, r->y * length + 9 * length / 10});
+    }
 }
 
 void forward(Robot *r) {

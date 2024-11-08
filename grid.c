@@ -1,4 +1,5 @@
-// grid features
+// grid features and functions
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -8,12 +9,11 @@
 //-----------------------------------------------------------------------------------------------
 // Background
 
-
 int screen_dimension(int cell_num, int cell_length) {
     return cell_num * cell_length;
 }
 
-Point* set_home(int *map, int cols, int rows) {
+Point* set_home(int *map, int *memory, int cols, int rows) {
     Point *p = malloc(sizeof(Point));
     int i = 0;
     while (i < 1) {
@@ -21,6 +21,7 @@ Point* set_home(int *map, int cols, int rows) {
         int r = rand() % (rows - 2) + 2;
         if (*((map + r * cols) + c) == 2) {
             *((map + r * cols) + c) = 4;
+            *((memory + r * cols) + c) = 2;
             p->x = c;
             p->y = r;
             i++;
@@ -28,27 +29,6 @@ Point* set_home(int *map, int cols, int rows) {
     }
     return p;
 } 
-
-// void add_obstacles(int *map, int cols, int rows, int n) {
-//     int i = 0;
-//     while (i < n) {
-//         int c = rand() % (cols - 2) + 2;
-//         int r = rand() % (rows - 2) + 2;
-//         if (*((map + r * cols) + c) == 2) {
-//             *((map + r * cols) + c) = 3;
-//             i++;
-//         }
-//     }
-// }
-
-// print map vals
-// for (int i = 0; i < cols; i++) {
-    //     printf("\n%d: ", i);
-    //     for (int j = 0; j < rows; j++) {
-    //         printf(" %d ", *((map + j * cols) + i));
-    //     }
-    // }
-    // printf("\n\n\n");
 
 void create_map(int *map, int cols, int rows) {
     for (int i = 0; i < rows; i++) {
@@ -144,9 +124,17 @@ void draw_markers(int *map, int cols, int rows, int length) {
     }
 }
 
-bool check_coord(int *map, int cols, int rows, int x, int y, int type_val) {
-    if (*((map + y * cols) + x) == type_val) {
-        return true;
-    }
-    return false;
+void display_marker_count(int count, int length, int rows) {
+    setRGBColour(0, 0, 0);
+    char marker_str[30];
+    sprintf(marker_str, "Markers: %d", count);
+    drawString(marker_str, length, (rows + 0.8) * length);
 }
+
+// print map vals
+// for (int i = 0; i < rows; i++) {
+//     printf("\n%d: ", i);
+//     for (int j = 0; j < cols; j++) {
+//         printf(" %d ", *((robot_memory + i * cols) + j));
+//     }
+// }
