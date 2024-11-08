@@ -19,4 +19,4 @@ To compile the program use `gcc -o MazeBot main.c graphics.c grid.c robot.c`
 
 To run the program use `.\MazeBot.out | java -jar drawapp-4.0.jar` (Linux) or `.\MazeBot.exe | java -jar drawapp-4.0.jar` (Windows)
 
-The program will run on its own, and `Drawing completed` will be printed in the drawapp display box.
+The program will run automatically, and when done `Drawing completed` will be printed in the drawapp display box.
