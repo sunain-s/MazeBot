@@ -129,11 +129,3 @@ void display_marker_count(int count, int length, int rows) {
     sprintf(marker_str, "Markers: %d", count);
     drawString(marker_str, length, (rows + 0.8) * length);
 }
-
-// print map vals
-// for (int i = 0; i < rows; i++) {
-//     printf("\n%d: ", i);
-//     for (int j = 0; j < cols; j++) {
-//         printf(" %d ", *((robot_memory + i * cols) + j));
-//     }
-// }
