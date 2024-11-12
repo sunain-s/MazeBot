@@ -49,7 +49,8 @@ void create_map(int *map, int cols, int rows) {
 }
 
 void sidewinder_maze(int *map, int cols, int rows) {
-    // sidewinder maze generation algorithm, carves a route up or right randomly 
+    // sidewinder maze generation algorithm, carves a route up or right randomly
+    // amazing maze generation research resource: https://www.jamisbuck.org/presentations/rubyconf2011/
     for (int i = 2; i < rows - 1; i += 2) {
         int begin = 1;
 
